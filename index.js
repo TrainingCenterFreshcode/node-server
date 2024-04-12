@@ -3,15 +3,18 @@ const fs = require('fs/promises');
 
 const PORT = 5000;
 
-const requestListener = (request, response) => {
+const requestListener = async (request, response) => {
     const { url } = request;
 
     if(url === '/index.html') { // http://localhost:5000/index.html
-        fs.readFile('./views/index.html', 'utf-8')
-        .then(data => {
+        try {
+            const data = await fs.readFile('./views/index.html', 'utf-8');
             response.statusCode = 200;
             response.end(data);
-        });
+        } catch (error) {
+            response.statusCode = 404;
+            response.end();
+        }
     } else {
         response.statusCode = 404;
         response.end();
