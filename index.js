@@ -23,3 +23,11 @@ const requestListener = async (request, response) => {
 const server = http.createServer(requestListener);
 
 server.listen(PORT);
+
+/*
+
+Задача: коли приходить запит на url
+/style.css
+Ми читаємо файл style.css і відпарвляємо його у відповідь
+
+*/
