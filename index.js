@@ -15,7 +15,18 @@ const requestListener = async (request, response) => {
             response.statusCode = 404;
             response.end();
         }
-    } else {
+    }
+    else if(url === '/style.css') {
+        try {
+            const data = await fs.readFile('./views/style.css', 'utf-8'); // http://localhost:5000/style.css
+            response.statusCode = 200;
+            response.end(data);
+        } catch (error) {
+            response.statusCode = 404;
+            response.end();
+        }
+    }
+    else {
         response.statusCode = 404;
         response.end();
     }
@@ -23,11 +34,3 @@ const requestListener = async (request, response) => {
 const server = http.createServer(requestListener);
 
 server.listen(PORT);
-
-/*
-
-Задача: коли приходить запит на url
-/style.css
-Ми читаємо файл style.css і відпарвляємо його у відповідь
-
-*/
