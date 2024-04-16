@@ -10,6 +10,8 @@ const PORT = 5000;
 // роут на реєстрацію
 app.post('/user', bodyParser, validateUser, UserController.registerUser);
 // роут на отримання всіх користувачів
+app.get('/users', UserController.getAllUsers); // http://localhost:5000/users
+
 
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);

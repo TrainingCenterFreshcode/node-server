@@ -11,3 +11,7 @@ module.exports.registerUser = (req, res, next) => {
 }
 
 // метод контроллера на отримання всіх користувачів
+module.exports.getAllUsers = (req, res, next) => {
+    const usersArray = User.findAll();
+    res.status(200).send(usersArray);
+}
