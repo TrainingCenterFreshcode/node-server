@@ -45,3 +45,16 @@ module.exports.deleteOneUser = (req, res, next) => {
         res.status(404).end();
     }
 }
+
+// метод контроллера на оновлення інформації про якогось конкретного юзера
+module.exports.updateUser = (req, res, next) => {
+    const { body, params: { userId } } = req;
+    const user = User.findOne(Number(userId));
+
+    if(user) {
+        const updatedUser = user.updateUser(body);
+        res.status(200).send(updatedUser);
+    } else {
+        res.status(404).end();
+    }
+}

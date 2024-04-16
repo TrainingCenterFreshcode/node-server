@@ -15,6 +15,8 @@ app.get('/users', UserController.getAllUsers); // http://localhost:5000/users
 app.get('/user/:userId', UserController.getOneUser);
 // роут на видалення якогось конкретного юзера
 app.delete('/user/:userId', UserController.deleteOneUser);
+// роут на оновлення конкретного користувача
+app.put('/user/:userId', bodyParser, UserController.updateUser);
 
 
 app.listen(PORT, () => {
