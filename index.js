@@ -12,7 +12,7 @@ app.post('/user', bodyParser, validateUser, UserController.registerUser);
 // роут на отримання всіх користувачів
 app.get('/users', UserController.getAllUsers); // http://localhost:5000/users
 // роут на отримання якогось конкретного юзера
-app.get('/user', UserController.getOneUser);
+app.get('/user/:userId', UserController.getOneUser);
 
 
 app.listen(PORT, () => {
